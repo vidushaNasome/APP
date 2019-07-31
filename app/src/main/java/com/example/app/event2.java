@@ -25,8 +25,7 @@ public class event2 extends AppCompatActivity {
         try {
             if (o1.equals("ab")) {
                 System.out.print("hello 1");
-                slctType.setText("Congratulations! You Have Selected PLATINUM package.");
-                ttpri.setText("Package Total Amount is Rs.150,000 (including VAT)");
+
 
             } else {
                 System.out.print("hello 2");
