@@ -17,7 +17,7 @@ public class event2 extends AppCompatActivity {
 
         Intent i=getIntent();
         o1=i.getStringExtra("op1");
-        System.out.println("hhhhhhhhhhhhhhhhh"+o1);
+
 
         slctType=findViewById(R.id.selectType);
         ttpri=findViewById(R.id.totprice);
