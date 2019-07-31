@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EventAct"
+    android:background="@drawable/childparty1">
+
+    <Button
+        android:id="@+id/buttonevhome"
+        android:layout_width="30dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:drawableLeft="@drawable/ic_home_black_24dp" />
+
+    <TextView
+
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/partyplan"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="#FAB4B2"/>
+
+    <Button
+        android:id="@+id/party11"
+        android:layout_width="298dp"
+        android:layout_height="202dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/partyfun1" />
+
+    <Button
+        android:id="@+id/party22"
+        android:layout_width="298dp"
+        android:layout_height="236dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/partyfun2" />
+</LinearLayout>
