@@ -30,4 +30,13 @@
     <string name="home">Home</string>
     <string name="partyplan">Plan Your Party.............</string>
     <string name="dis">Please provide other details</string>
+    <string name="line">-----------</string>
+    <string name="help">"We'd LOVE to Help!"</string>
+    <string name="yourname">" Your Name"</string>
+    <string name="Massage">Massage</string>
+    <string name="email1">" Your Email Address"</string>
+    <string name="send">Send</string>
+    <string name="admincontactUs">Contact Us-Submitted Details</string>
+    <string name="delete">DELETE</string>
+    <string name="UPDATE">UPDATE</string>
 </resources>

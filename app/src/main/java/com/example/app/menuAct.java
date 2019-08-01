@@ -52,7 +52,7 @@ public class menuAct extends AppCompatActivity
 
 
        Intent i1=getIntent();
-        msg=i1.getStringExtra("userName");
+        msg=i1.getStringExtra("userNameMsg");
         System.out.println(msg);
         un=(TextView) findViewById(R.id.editTextid);
         System.out.println(un);
@@ -114,6 +114,14 @@ public class menuAct extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_share) {
+            if(!msg.equals("admin")) {
+                Intent i = new Intent(menuAct.this, ContactUs.class);
+                i.putExtra("un", msg);
+                startActivity(i);
+            }else{
+                Intent i3 = new Intent(menuAct.this, AdminContact.class);
+                startActivity(i3);
+            }
 
         } else if (id == R.id.nav_send) {
 

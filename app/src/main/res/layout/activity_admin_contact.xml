@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminContact"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/blueshade">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/admincontactUs"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/homeadmincon"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#8C9EFF"
+        android:text="@string/home" />
+
+    <Button
+        android:id="@+id/deleteadmincon"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#8C9EFF"
+        android:text="@string/delete" />
+    <Button
+        android:id="@+id/updateadmincon"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#8C9EFF"
+        android:text="@string/UPDATE" />
+
+</LinearLayout>
