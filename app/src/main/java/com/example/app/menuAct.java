@@ -108,7 +108,7 @@ public class menuAct extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
-            Intent i = new Intent(menuAct.this, EventAct.class);
+            Intent i = new Intent(menuAct.this, MainActivity_Madara.class);
             startActivity(i);
 
         } else if (id == R.id.nav_share) {
