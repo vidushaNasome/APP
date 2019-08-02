@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class ContactUs extends AppCompatActivity {
 
+        private Session session;
         String username;
         TextView un1,email,massage;
         Button send;
@@ -21,13 +22,15 @@ public class ContactUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
+        session = new Session(getApplicationContext());
+
         un1=(TextView) findViewById(R.id.namecontact);
         email= findViewById(R.id.emailcontact);
         massage= findViewById(R.id.massegecontact);
         send=findViewById(R.id.contactsendbtn);
 
         Intent i=getIntent();
-        username=i.getStringExtra("un");
+        username=session.getusename();
         un1.setText(" "+username);
     }
 

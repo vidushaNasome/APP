@@ -16,13 +16,6 @@
         android:text="@string/contactUs"
         android:textSize="25dp"
         android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/line"
-        android:textSize="30dp"
-        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
