@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".custom">
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="234dp"
+        app:srcCompat="@drawable/murray_mancini_dried_tomato_pie" />
+
+        </RelativeLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
-
+        <CheckBox
+            android:id="@+id/checkPan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pan"
+            android:textSize="20dp"/>
     </LinearLayout>
 
-</ScrollView>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_marginTop="20dp">
+    <CheckBox
+        android:id="@+id/checSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Small"
+        android:textSize="20dp"/>
+
+        <CheckBox
+            android:id="@+id/checkMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medium"
+            android:textSize="20dp"/>
+
+        <CheckBox
+            android:id="@+id/checkLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Large"
+            android:textSize="20dp"/>
+   </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
-</RelativeLayout>
+        tools:text="Add to cart" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pizza"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rs.510"
+        android:textSize="25dp"/>
+</LinearLayout>

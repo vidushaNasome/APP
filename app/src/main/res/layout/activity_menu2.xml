@@ -87,6 +87,8 @@
                                 android:textSize="20dp" />
 
                             <Button
+
+                                android:id="@+id/tc_customize"
                                 android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
@@ -181,6 +183,7 @@
                                 android:textSize="20dp" />
 
                             <Button
+                                android:id="@+id/sd_customize"
                                 android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
@@ -273,6 +276,7 @@
                                 android:textSize="20dp" />
 
                             <Button
+                                android:id="@+id/ps_customize"
                                 android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
