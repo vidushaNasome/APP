@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactUs"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/blueshade">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/contactUs"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/help"
+        android:textColor="#021627"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/namecontact"
+        android:background="#55FCFBFB"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="25dp"
+        android:hint="@string/yourname"
+
+        android:singleLine="false"
+        android:textColor="#021627"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/emailcontact"
+        android:layout_width="250dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="15dp"
+        android:background="#55FCFBFB"
+
+        android:hint="@string/email1"
+        android:textColor="#021627"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/massegecontact"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:background="#55FCFBFB"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/Massage"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/contactsendbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#8C9EFF"
+        android:text="@string/send" />
+
+
+</LinearLayout>

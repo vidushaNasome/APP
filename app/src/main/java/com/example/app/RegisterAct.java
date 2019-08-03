@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class RegisterAct extends AppCompatActivity {
 
+    private Session session;
     TextView un;
     TextView pw;
     TextView email;
@@ -23,6 +24,8 @@ public class RegisterAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        session = new Session(getApplicationContext());
 
         un=findViewById(R.id.unid_Reg);
         pw=findViewById(R.id.pw_Reg);
@@ -55,7 +58,7 @@ public class RegisterAct extends AppCompatActivity {
                 Intent i = new Intent(RegisterAct.this, menuAct.class);
                     i.putExtra("userName",username);
 
-
+                    session.setusename(username);
                     Toast.makeText(RegisterAct.this, "You Have Registerd Successfully!", Toast.LENGTH_SHORT).show();
                     LayoutInflater inflater = getLayoutInflater();
                     View toastLayout = inflater.inflate(R.layout.successmsg, (ViewGroup) findViewById(R.id.successMsg));

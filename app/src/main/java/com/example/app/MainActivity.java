@@ -2,6 +2,7 @@ package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Session session;
 
     TextView un;
     TextView pw;
@@ -21,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        session = new Session(getApplicationContext());
+
         un=findViewById(R.id.un_log);
         pw=findViewById(R.id.pw_log);
         login=findViewById(R.id.login_log);
         register=findViewById(R.id.reg_log);
+
+
 
     }
 
@@ -43,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, menuAct.class);
 
                 if(un_1.equals("vidusha")&&pw_1.equals("1234")||un_1.equals("admin")&&pw_1.equals("1234")) {
-                    i.putExtra("userName",un_1);
+
+                    session.setusename(un_1);
+
+                    i.putExtra("userNameMsg",un_1);
                     startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(),"Invalid User Name or Password", Toast.LENGTH_LONG).show();

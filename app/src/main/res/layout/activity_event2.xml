@@ -17,6 +17,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/dis"
+        android:textColor="#4C15BB"
+        app:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -27,12 +29,14 @@
     <TextView
         android:id="@+id/selectType"
         android:layout_width="match_parent"
-        android:layout_height="46dp" />
+        android:layout_height="46dp"
+        android:textColor="#00F3A507" />
 
     <TextView
         android:id="@+id/totprice"
         android:layout_width="match_parent"
-        android:layout_height="69dp" />
+        android:layout_height="69dp"
+        android:textColor="#FFB300" />
 
     <TextView
         android:id="@+id/textView7"
@@ -55,40 +59,40 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="match_parent"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="297dp"
+        android:layout_height="52dp"
         android:text="Sheduled Time" />
 
     <EditText
         android:id="@+id/editText8"
-        android:layout_width="match_parent"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="time" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="match_parent"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:text="Parents Name" />
 
     <EditText
         android:id="@+id/editText9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="299dp"
+        android:layout_height="34dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="371dp"
         android:layout_height="wrap_content"
         android:text="Button" />
 

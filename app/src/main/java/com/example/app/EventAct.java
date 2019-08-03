@@ -28,21 +28,20 @@ public class EventAct extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+        Intent i1=new Intent(EventAct.this,event2.class);
 
         switch (view.getId()){
             case(R.id.buttonevhome):Intent i=new Intent(EventAct.this,menuAct.class);
                                     startActivity(i);
                                     break;
 
-            case(R.id.party11): Intent i1=new Intent(EventAct.this,event2.class);
-                                i1.putExtra("opt1","ab");
+            case(R.id.party11): i1.putExtra("opt1","platinum");
                                 startActivity(i1);
                                 break;
 
-            case(R.id.party22):Intent i2=new Intent(EventAct.this,event2.class);
-                                i2.putExtra("opt1","bc");
-                                startActivity(i2);
-
+            case(R.id.party22): i1.putExtra("opt2","gold");
+                                startActivity(i1);
+                                break;
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,24 +22,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class menuAct extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private Session session;
     TextView un;
     String msg;
+    ImageButton logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        session = new Session(getApplication());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Logged in Member", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -52,7 +60,7 @@ public class menuAct extends AppCompatActivity
 
 
        Intent i1=getIntent();
-        msg=i1.getStringExtra("userName");
+        msg=i1.getStringExtra("userNameMsg");
         System.out.println(msg);
         un=(TextView) findViewById(R.id.editTextid);
         System.out.println(un);
@@ -61,6 +69,9 @@ public class menuAct extends AppCompatActivity
             un.setText(msg);
 
         }catch (Exception e){}
+
+        logout=(ImageButton)findViewById(R.id.logout);
+
     }
 
     @Override
@@ -108,12 +119,24 @@ public class menuAct extends AppCompatActivity
             startActivity(i1);
 
         } else if (id == R.id.nav_slideshow) {
+            Intent i = new Intent(menuAct.this, MainActivity_Oshani.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_tools) {
-            Intent i = new Intent(menuAct.this, EventAct.class);
+            Intent i = new Intent(menuAct.this, MainActivity_Madara.class);
             startActivity(i);
 
         } else if (id == R.id.nav_share) {
+
+            String username=session.getusename();
+            if(!username.equals("admin")) {
+                Intent i = new Intent(menuAct.this, ContactUs.class);
+                i.putExtra("un", msg);
+                startActivity(i);
+            }else{
+                Intent i3 = new Intent(menuAct.this, AdminContact.class);
+                startActivity(i3);
+            }
 
         } else if (id == R.id.nav_send) {
 
@@ -122,5 +145,18 @@ public class menuAct extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(menuAct.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 }
