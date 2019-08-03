@@ -115,6 +115,8 @@ public class menuAct extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Intent i1 = new Intent(menuAct.this, MenuActivity.class);
+            startActivity(i1);
 
         } else if (id == R.id.nav_slideshow) {
             Intent i = new Intent(menuAct.this, MainActivity_Oshani.class);
