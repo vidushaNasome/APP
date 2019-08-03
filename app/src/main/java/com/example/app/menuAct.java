@@ -139,7 +139,8 @@ public class menuAct extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_send) {
-
+            Intent i4 = new Intent(menuAct.this, aboutus.class);
+            startActivity(i4);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
