@@ -7,7 +7,7 @@
     tools:context=".ContactUs"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/blueshade">
+    android:background="@drawable/contact33">
 
     <TextView
         android:layout_width="wrap_content"
