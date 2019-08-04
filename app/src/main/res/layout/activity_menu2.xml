@@ -47,7 +47,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="136dp"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -89,9 +89,9 @@
                             <Button
 
                                 android:id="@+id/tc_customize"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:background="#C85ADF"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="Customize"
@@ -109,13 +109,14 @@
 
 
                         <ImageView
-                            android:layout_width="195dp"
-                            android:layout_height="109dp"
-                            android:layout_alignParentRight="true"
+                            android:layout_width="199dp"
+                            android:layout_height="119dp"
+                            android:layout_alignParentTop="true"
 
-                            android:layout_marginLeft="-40dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="-50dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="5dp"
                             android:src="@drawable/amratsari_tandoori_paneer_vegi_300" />
 
 
@@ -143,7 +144,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="136dp"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -184,9 +185,9 @@
 
                             <Button
                                 android:id="@+id/sd_customize"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:background="#C85ADF"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="Customize"
@@ -211,7 +212,7 @@
                             android:layout_marginLeft="-40dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="18dp"
-                            android:src="@drawable/sausage_delight_pizza"/>
+                            android:src="@drawable/sausage_delight_pizza" />
 
 
                     </RelativeLayout>
@@ -236,7 +237,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="136dp"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -277,9 +278,9 @@
 
                             <Button
                                 android:id="@+id/ps_customize"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:background="#C85ADF"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="Customize"
@@ -297,13 +298,14 @@
 
 
                         <ImageView
-                            android:layout_width="169dp"
-                            android:layout_height="109dp"
-                            android:layout_alignParentRight="true"
+                            android:layout_width="199dp"
+                            android:layout_height="119dp"
+                            android:layout_alignParentTop="true"
 
+                            android:layout_alignParentRight="true"
                             android:layout_marginLeft="-40dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="18dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="5dp"
                             android:src="@drawable/paneer_spice_pizza_300" />
 
 
@@ -389,13 +391,13 @@
 
 
                         <ImageView
-                            android:layout_width="169dp"
-                            android:layout_height="109dp"
+                            android:layout_width="199dp"
+                            android:layout_height="119dp"
                             android:layout_alignParentRight="true"
 
                             android:layout_marginLeft="-40dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="-5dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="5dp"
                             android:src="@drawable/tandoori_chicken_pizza" />
 
 

@@ -17,6 +17,7 @@
         <activity android:name=".CashDelivery" />
         <activity android:name=".CardDelivery" />
         <activity android:name=".mycart" />
+        <activity android:name=".aboutus" />
         <activity android:name=".event2" />
         <activity
             android:name=".menuAct"

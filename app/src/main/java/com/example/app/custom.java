@@ -4,15 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class custom extends AppCompatActivity {
+public class custom extends AppCompatActivity implements View.OnClickListener {
 
     int tot;
     CheckBox ch;
+    CheckBox chicken;
+    CheckBox cheese;
+    CheckBox sussage;
+    CheckBox small;
+    CheckBox large;
+    CheckBox extra;
     Button bt1;
     TextView name;
     TextView price;
@@ -20,11 +29,32 @@ public class custom extends AppCompatActivity {
     String nm;
     String pr1;
     String totst;
+    int total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom);
         bt1=findViewById(R.id.addtocartbtn);
+        bt1.setOnClickListener(this);
+        chicken=findViewById(R.id.checkChicken);
+        chicken.setOnClickListener(this);
+
+        cheese=findViewById(R.id.checkExtraCheese);
+        cheese.setOnClickListener(this);
+
+        sussage=findViewById(R.id.checkSausage);
+        sussage.setOnClickListener(this);
+
+        small=findViewById(R.id.checSmall);
+        small.setOnClickListener(this);
+
+        extra=findViewById(R.id.checkMedium);
+        extra.setOnClickListener(this);
+
+        large=findViewById(R.id.checkLarge);
+        large.setOnClickListener(this);
+
+
         name=(TextView) findViewById(R.id.pizza1);
         price=(TextView)findViewById(R.id.price1);
         ch=(CheckBox) findViewById(R.id.checSmall);
@@ -34,37 +64,137 @@ public class custom extends AppCompatActivity {
         pr1 = i3.getStringExtra("msg2");
         try {
             pr = Integer.parseInt(pr1);
+            tot=pr;
             name.setText(nm);
             price.setText("Rs "+pr1+".00");
         }catch(Exception e){}
+
+
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i= new Intent(custom.this,MainActivity_Oshani.class);
-                i.putExtra("msg11",nm);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case (R.id.addtocartbtn):
+                Intent i = new Intent(custom.this, MainActivity_Oshani.class);
+                i.putExtra("msg11", nm);
 
-                totst=String.valueOf(tot);
-                i.putExtra("msg22",totst);
+
+                totst = String.valueOf(tot);
+                i.putExtra("msg22", totst);
+
+                Toast.makeText(custom.this, "Item added to the cart!", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View toastLayout = inflater.inflate(R.layout.successmsg, (ViewGroup) findViewById(R.id.successMsg));
+                Toast toast = new Toast(getApplicationContext());
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(toastLayout); toast.show();
+
                 startActivity(i);
+                break;
 
 
-            }
-        });
+            case(R.id.checkChicken):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+1000;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
 
-        ch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                }
+                else{
+                    tot=tot-1000;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
 
-                tot=pr+200;
+                }
+                break;
+            case(R.id.checkExtraCheese):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+500;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
 
-                pr1=String.valueOf(tot);
-                price.setText(pr1);
-            }
-        });
+                }
+                else{
+                    tot=tot-500;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                break;
+            case(R.id.checkSausage):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+300;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                else{
+                    tot=tot-300;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                break;
+            case(R.id.checSmall):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+0;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                else{
+                    tot=tot-0;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                break;
+            case(R.id.checkMedium):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+500;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                else{
+                    tot=tot-500;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                break;
+            case(R.id.checkLarge):
+                if(((CheckBox) view).isChecked()){
+                    tot=tot+600;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                else{
+                    tot=tot-600;
+                    System.out.println("total 2="+tot);
+                    totst=String.valueOf(tot);
+                    price.setText("Rs "+totst+".00");
+
+                }
+                break;
+
+        }
+
     }
+
+
+
 }
