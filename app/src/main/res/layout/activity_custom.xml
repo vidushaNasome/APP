@@ -57,18 +57,23 @@
    </LinearLayout>
 
     <Button
+        android:id="@+id/addtocartbtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="22dp"
         tools:text="Add to cart" />
+
     <TextView
+        android:id="@+id/pizza1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pizza"
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 
     <TextView
+        android:id="@+id/price1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rs.510"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
+
 </LinearLayout>

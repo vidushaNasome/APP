@@ -33,6 +33,10 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i1 = new Intent(MenuActivity.this,custom.class);
+                String p="change name";
+                String price="510";
+                i1.putExtra("msg1",p);
+                i1.putExtra("msg2",price);
                 startActivity(i1);
             }
         });
