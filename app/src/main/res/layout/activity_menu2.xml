@@ -112,7 +112,6 @@
                             android:layout_width="199dp"
                             android:layout_height="119dp"
                             android:layout_alignParentTop="true"
-
                             android:layout_alignParentRight="true"
                             android:layout_marginLeft="-50dp"
                             android:layout_marginTop="2dp"
@@ -349,7 +348,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bolditalic"
-                        android:text="Tandoori Chicken Pizza"
+                        android:text="Develled Chicken Pizza"
                         android:textColor="#f22f11"
                         android:textSize="20dp" />
 
@@ -371,6 +370,7 @@
                                 android:textSize="20dp" />
 
                             <Button
+                                android:id="@+id/dc_customize"
                                 android:layout_marginTop="10dp"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
@@ -394,7 +394,6 @@
                             android:layout_width="199dp"
                             android:layout_height="119dp"
                             android:layout_alignParentRight="true"
-
                             android:layout_marginLeft="-40dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginRight="5dp"
