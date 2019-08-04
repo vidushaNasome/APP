@@ -10,10 +10,9 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="100dp"
         android:gravity="top"
-        android:text="@string/sucmsg"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="100dp"/>
+        android:textColor="@color/colorAccent" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -22,5 +21,10 @@
         app:srcCompat="@drawable/suc"
         android:gravity="center"
         android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
 
 </LinearLayout>
