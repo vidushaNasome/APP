@@ -9,7 +9,9 @@
     <com.example.myapplication.CustomCalendarView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/custom_calndar_view"></com.example.myapplication.CustomCalendarView>
+        android:id="@+id/custom_calndar_view">
+
+    </com.example.myapplication.CustomCalendarView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
