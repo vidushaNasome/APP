@@ -12,8 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aboutus"></activity>
+        <activity android:name=".DisplayCash"></activity>
+        <activity android:name=".Payment" />
+        <activity android:name=".CashDelivery" />
+        <activity android:name=".CardDelivery" />
         <activity android:name=".mycart" />
+        <activity android:name=".aboutus" />
         <activity android:name=".event2" />
         <activity
             android:name=".menuAct"
@@ -24,6 +28,8 @@
         <activity android:name=".AdminContact" />
         <activity android:name=".ContactUs" />
         <activity android:name=".custom" />
+        <activity android:name=".MainActivity_Oshani" />
+        <activity android:name=".MainActivity_Madara" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
