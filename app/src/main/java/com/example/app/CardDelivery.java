@@ -12,25 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CardDelivery extends AppCompatActivity {
-    TextView txtName,txtTotal;
-    String fdName;
-    String subTot;
-    Button card;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_delivery);
 
-        txtName=(TextView)findViewById(R.id.txtCname);
-        txtTotal=(TextView)findViewById(R.id.txtSum);
-
-        Intent i=getIntent();
-        fdName=i.getStringExtra("Food Name");
-        subTot=i.getStringExtra("Net Total");
-
-
-        txtName.setText(fdName);
-        txtTotal.setText(subTot);
     }
     public void open(View view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
