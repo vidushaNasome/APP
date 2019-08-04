@@ -1,17 +1,17 @@
 package com.example.app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class MainActivity_Madara extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainCalendar extends AppCompatActivity {
 
     CustomCalendarView customCalendarView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main__madara);
+        setContentView(R.layout.activity_main);
+
         customCalendarView = (CustomCalendarView)findViewById(R.id.custom_calndar_view);
     }
 }
