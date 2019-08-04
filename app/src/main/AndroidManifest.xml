@@ -29,6 +29,7 @@
         <activity android:name=".custom" />
         <activity android:name=".MainActivity_Oshani" />
         <activity android:name=".MainActivity_Madara" />
+        <activity android:name=".MainCalendar"/>
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
 
