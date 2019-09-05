@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RegisterAct extends AppCompatActivity {
 
     private Session session;
@@ -20,6 +23,9 @@ public class RegisterAct extends AppCompatActivity {
     TextView email;
     TextView cpw;
     Button reg;
+
+    DatabaseReference dbRef;
+    User us;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,20 +38,27 @@ public class RegisterAct extends AppCompatActivity {
         reg=findViewById(R.id.reg_Reg);
         cpw=findViewById(R.id.cpw_Reg);
         email=findViewById(R.id.email_Reg);
+
+        us=new User();
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
+
+
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                dbRef=FirebaseDatabase.getInstance().getReference().child("User");
 
                 String username=un.getText().toString();
                 String password=pw.getText().toString();
                 String cpwd=cpw.getText().toString();
                 String eml=email.getText().toString();
+
                 if(username.isEmpty()||password.isEmpty())
                     Toast.makeText(getApplicationContext(), "Please Input Values For Empty Fields", Toast.LENGTH_LONG).show();
 
@@ -55,7 +68,16 @@ public class RegisterAct extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Invalid email Address", Toast.LENGTH_LONG).show();
                 }
                 else{
-                Intent i = new Intent(RegisterAct.this, menuAct.class);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("message");
+
+                    us.setUsername(un.getText().toString().trim());
+                    dbRef.push().setValue(us);
+
+
+                    Intent i = new Intent(RegisterAct.this, menuAct.class);
+
+
                     i.putExtra("userName",username);
 
                     session.setusename(username);
