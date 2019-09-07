@@ -71,9 +71,24 @@ public class RegisterAct extends AppCompatActivity {
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("message");
 
-                    us.setUsername(un.getText().toString().trim());
-                    dbRef.push().setValue(us);
 
+                    us.setUsername(un.getText().toString().trim());
+                    us.setEmail(email.getText().toString().trim());
+                    us.setPassword(pw.getText().toString().trim());
+                    dbRef.child(username).setValue(us);
+
+                    //dbRef.push().setValue(us);
+                    /*
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString().trim()});
+
+
+
+                    intent.setType("message/rfc822");
+
+                    startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
+                    */
 
                     Intent i = new Intent(RegisterAct.this, menuAct.class);
 

@@ -1,5 +1,6 @@
 package com.example.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -10,6 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class MainActivity extends AppCompatActivity {
 
     private Session session;
@@ -17,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
     TextView un;
     TextView pw;
 
+    String name;
+    String password;
+
     Button login;
     Button register;
+
+    String un_1;
+    String pw_1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,22 +57,45 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String un_1=un.getText().toString();
-                String pw_1=pw.getText().toString();
-
-                Intent i = new Intent(MainActivity.this, menuAct.class);
-
-                if(un_1.equals("vidusha")&&pw_1.equals("1234")||un_1.equals("admin")&&pw_1.equals("1234")) {
-
-                    session.setusename(un_1);
-
-                    i.putExtra("userNameMsg",un_1);
-                    startActivity(i);
-                }else{
-                    Toast.makeText(getApplicationContext(),"Invalid User Name or Password", Toast.LENGTH_LONG).show();
+                un_1=un.getText().toString();
+                pw_1=pw.getText().toString();
 
 
-                }
+                DatabaseReference logindf = FirebaseDatabase.getInstance().getReference().child("User").child(un_1);
+                logindf.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChildren()){
+                            name=dataSnapshot.child("username").getValue().toString();
+                            password=dataSnapshot.child("password").getValue().toString();
+                            System.out.println(name);
+                            System.out.println(password);
+                            System.out.println(pw_1);
+                            Intent i = new Intent(MainActivity.this, menuAct.class);
+                            if(pw_1.equals(password)) {
+
+                                session.setusename(un_1);
+
+                                i.putExtra("userNameMsg",un_1);
+                                startActivity(i);
+                            }else{
+                                Toast.makeText(getApplicationContext(),"Invalid User Name or Password", Toast.LENGTH_LONG).show();
+
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+
             }
         });
 
