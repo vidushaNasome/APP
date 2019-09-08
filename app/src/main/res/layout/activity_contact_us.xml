@@ -46,7 +46,7 @@
         android:layout_marginTop="15dp"
         android:background="#55FCFBFB"
 
-        android:hint="@string/email1"
+        android:hint="@string/Subject"
         android:textColor="#021627"
         android:textSize="15dp"
         android:textStyle="bold" />

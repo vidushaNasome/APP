@@ -52,7 +52,7 @@ public class ContactUs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                dbRef= FirebaseDatabase.getInstance().getReference().child("ContactMsg");
+                //dbRef= FirebaseDatabase.getInstance().getReference().child("ContactMsg");
 
                 String username=un1.getText().toString();
                 String email1=email.getText().toString();
@@ -60,7 +60,17 @@ public class ContactUs extends AppCompatActivity {
 
                 conn = isOnline();
                 if (conn == true) {
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    Intent email = new Intent(Intent.ACTION_SEND);
+                    email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "teamblossom0@gmail.com"});
+
+                    email.putExtra(Intent.EXTRA_SUBJECT, email1);
+                    email.putExtra(Intent.EXTRA_TEXT, "From "+username+"\n"+massage1);
+
+                    //need this to prompts email client only
+                    email.setType("message/rfc822");
+
+                    startActivity(Intent.createChooser(email, "Choose an Email client :"));
+                    /*FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("message");
 
 
@@ -72,7 +82,7 @@ public class ContactUs extends AppCompatActivity {
 
                     Intent i = new Intent(ContactUs.this, menuAct.class);
                     Toast.makeText(ContactUs.this, "We Have Recieved Your FeedBack ! ", Toast.LENGTH_SHORT).show();
-                    startActivity(i);
+                    startActivity(i);*/
                 }
             }
         });
