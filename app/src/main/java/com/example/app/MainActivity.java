@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        isOnline();
+
         session = new Session(getApplicationContext());
 
         un=findViewById(R.id.un_log);
@@ -57,32 +61,41 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                isOnline();
                 un_1=un.getText().toString();
                 pw_1=pw.getText().toString();
 
 
                 DatabaseReference logindf = FirebaseDatabase.getInstance().getReference().child("User").child(un_1);
+
                 logindf.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.hasChildren()){
-                            name=dataSnapshot.child("username").getValue().toString();
-                            password=dataSnapshot.child("password").getValue().toString();
-                            System.out.println(name);
-                            System.out.println(password);
-                            System.out.println(pw_1);
-                            Intent i = new Intent(MainActivity.this, menuAct.class);
-                            if(pw_1.equals(password)) {
+                        try {
+                            if (dataSnapshot.hasChildren()) {
+                                name = dataSnapshot.child("username").getValue().toString();
+                                password = dataSnapshot.child("password").getValue().toString();
+                                System.out.println(name);
+                                System.out.println(password);
+                                System.out.println(pw_1);
+                                Intent i = new Intent(MainActivity.this, menuAct.class);
+                                if (pw_1.equals(password)) {
 
-                                session.setusename(un_1);
+                                    session.setusename(un_1);
 
-                                i.putExtra("userNameMsg",un_1);
-                                startActivity(i);
-                            }else{
-                                Toast.makeText(getApplicationContext(),"Invalid User Name or Password", Toast.LENGTH_LONG).show();
+                                    i.putExtra("userNameMsg", un_1);
+                                    startActivity(i);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Invalid User Name or Password", Toast.LENGTH_LONG).show();
+
+
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Invalid User Name or Password", Toast.LENGTH_LONG).show();
 
 
                             }
+                        } catch (Exception e) {
                         }
                     }
 
@@ -107,5 +120,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(getApplicationContext(), "No Internet connection!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }

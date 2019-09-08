@@ -7,7 +7,7 @@
     tools:context=".RegisterAct"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/pic2"
+    android:background="@drawable/pic2n"
     android:backgroundTintMode="src_over">
 
     <ImageView

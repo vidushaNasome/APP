@@ -1,8 +1,12 @@
 package com.example.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -12,18 +16,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterAct extends AppCompatActivity {
 
     private Session session;
+    String username,password,cpwd,eml,name;
     TextView un;
     TextView pw;
     TextView email;
     TextView cpw;
     Button reg;
-
+    Boolean conn;
+    String name21="";
     DatabaseReference dbRef;
     User us;
     @Override
@@ -52,12 +61,11 @@ public class RegisterAct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                dbRef=FirebaseDatabase.getInstance().getReference().child("User");
 
-                String username=un.getText().toString();
-                String password=pw.getText().toString();
-                String cpwd=cpw.getText().toString();
-                String eml=email.getText().toString();
+                username=un.getText().toString();
+                 password=pw.getText().toString();
+                 cpwd=cpw.getText().toString();
+                 eml=email.getText().toString();
 
                 if(username.isEmpty()||password.isEmpty())
                     Toast.makeText(getApplicationContext(), "Please Input Values For Empty Fields", Toast.LENGTH_LONG).show();
@@ -67,47 +75,74 @@ public class RegisterAct extends AppCompatActivity {
                 else if(!Patterns.EMAIL_ADDRESS.matcher(eml).matches()){
                     Toast.makeText(getApplicationContext(),"Invalid email Address", Toast.LENGTH_LONG).show();
                 }
-                else{
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("message");
+                else {
+                    conn = isOnline();
+                    if (conn == true) {
+
+                        DatabaseReference logindf = FirebaseDatabase.getInstance().getReference().child("User").child(username);
+
+                        logindf.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.hasChildren()) {Toast.makeText(RegisterAct.this, "User Name Existed!", Toast.LENGTH_SHORT).show();}else{
+                                    dbRef=FirebaseDatabase.getInstance().getReference().child("User");
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference myRef = database.getReference("message");
 
 
-                    us.setUsername(un.getText().toString().trim());
-                    us.setEmail(email.getText().toString().trim());
-                    us.setPassword(pw.getText().toString().trim());
-                    dbRef.child(username).setValue(us);
-
-                    //dbRef.push().setValue(us);
-                    /*
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString().trim()});
+                                    us.setUsername(un.getText().toString().trim());
+                                    us.setEmail(email.getText().toString().trim());
+                                    us.setPassword(pw.getText().toString().trim());
+                                    dbRef.child(username).setValue(us);
 
 
 
-                    intent.setType("message/rfc822");
-
-                    startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
-                    */
-
-                    Intent i = new Intent(RegisterAct.this, menuAct.class);
+                                    Intent i = new Intent(RegisterAct.this, menuAct.class);
 
 
-                    i.putExtra("userName",username);
+                                    i.putExtra("userName", username);
 
-                    session.setusename(username);
-                    Toast.makeText(RegisterAct.this, "You Have Registerd Successfully!", Toast.LENGTH_SHORT).show();
-                    LayoutInflater inflater = getLayoutInflater();
-                    View toastLayout = inflater.inflate(R.layout.successmsg, (ViewGroup) findViewById(R.id.successMsg));
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    toast.setView(toastLayout); toast.show();
+                                    session.setusename(username);
+                                    Toast.makeText(RegisterAct.this, "You Have Registerd Successfully!", Toast.LENGTH_SHORT).show();
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View toastLayout = inflater.inflate(R.layout.successmsg, (ViewGroup) findViewById(R.id.successMsg));
+                                    Toast toast = new Toast(getApplicationContext());
+                                    toast.setDuration(Toast.LENGTH_LONG);
+                                    toast.setView(toastLayout);
+                                    toast.show();
 
 
-                    startActivity(i);
+                                    startActivity(i);
 
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+                    }
                 }
             }
         });
     }
+
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(getApplicationContext(), "No Internet connection!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+
+
+
 }
