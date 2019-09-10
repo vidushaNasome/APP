@@ -42,4 +42,13 @@
     <string name="Massages">"Vidusha        I need to contact Manager"</string>
     <string name="addtocart">Add to Cart</string>
     <string name="Subject">Subject</string>
+    <string name="photo">Capture a Photo</string>
+    <string name="upld">Upload the photo</string>
+    <string name="upl">Upload a Profile Picture</string>
+    <string name="acc">Go to my Account</string>
+    <string name="profile">My Profile</string>
+    <string name="ph">PHOTO</string>
+    <string name="usn">USER NAME</string>
+    <string name="email12">EMAIL</string>
+    <string name="deletema">DELETE MY ACCOUNT</string>
 </resources>

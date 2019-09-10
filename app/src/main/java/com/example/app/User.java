@@ -1,11 +1,14 @@
 package com.example.app;
 
+import android.graphics.Bitmap;
+
 public class User {
 
     private String id;
     private String username;
     private String password;
     private String email;
+    private String image;
 
     public String getId() {
         return id;
@@ -37,5 +40,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
