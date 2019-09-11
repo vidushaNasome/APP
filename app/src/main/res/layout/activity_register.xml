@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterAct"
-    android:orientation="vertical"
+    android:background="#C6E4F1"
+    android:backgroundTintMode="src_over"
     android:gravity="center_horizontal"
-    android:background="@drawable/pic2n"
-    android:backgroundTintMode="src_over">
+    android:orientation="vertical"
+    tools:context=".RegisterAct">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/register"
+        android:layout_width="99dp"
+        android:layout_height="80dp"
         android:layout_marginTop="50dp"
-        />
+        app:srcCompat="@drawable/register" />
 
     <EditText
         android:id="@+id/unid_Reg"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/username"
-
         android:layout_marginTop="30dp"
+
+        android:drawableLeft="@drawable/username"
         android:hint="@string/username"
         android:textColor="#FB8C00"
         android:textColorHint="#00897B" />
@@ -32,9 +31,9 @@
         android:id="@+id/email_Reg"
         android:layout_width="200dp"
         android:layout_height="45dp"
+        android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/email"
         android:ems="10"
-        android:layout_marginTop="20dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColorHint="#00897B" />
@@ -44,8 +43,8 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:hint="@string/password"
         android:drawableLeft="@drawable/password"
+        android:hint="@string/password"
         android:textColorHint="#00897B" />
 
     <EditText
@@ -53,8 +52,8 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:hint="@string/cpassword"
         android:drawableLeft="@drawable/cpw"
+        android:hint="@string/cpassword"
         android:textColorHint="#00897B" />
 
     <Button
@@ -63,7 +62,6 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/Register" />
-
 
 
 </LinearLayout>

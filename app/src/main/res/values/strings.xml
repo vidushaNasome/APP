@@ -51,4 +51,9 @@
     <string name="usn">USER NAME</string>
     <string name="email12">EMAIL</string>
     <string name="deletema">DELETE MY ACCOUNT</string>
+    <string name="snd">SEND VIA EMAIL</string>
+    <string name="password1">CURRENT PASSWORD</string>
+    <string name="password2">NEW PASSWORD</string>
+    <string name="hnt">Please Input a New password ,Only if you willing to change it,</string>
+    <string name="pw">TYPE PASSWORD HERE</string>
 </resources>
