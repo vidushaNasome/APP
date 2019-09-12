@@ -117,8 +117,16 @@ public class menuAct extends AppCompatActivity
             Intent i3=new Intent(menuAct.this,Account.class);
             startActivity(i3);
         } else if (id == R.id.nav_gallery) {
-            Intent i1 = new Intent(menuAct.this, MenuActivity.class);
-            startActivity(i1);
+
+            String nm=session.getusename();
+            System.out.println(nm);
+            if(nm.equals("admin")) {
+                Intent i1 = new Intent(menuAct.this, productDetails.class);
+                startActivity(i1);
+            }else{
+                Intent i3 = new Intent(menuAct.this,MenuActivity.class);
+                startActivity(i3);
+            }
 
         } else if (id == R.id.nav_slideshow) {
             Intent i = new Intent(menuAct.this, MainActivity_Oshani.class);
