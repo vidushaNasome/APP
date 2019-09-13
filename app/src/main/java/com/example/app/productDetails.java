@@ -2,6 +2,7 @@ package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class productDetails extends AppCompatActivity {
     Integer Price12;
     Button add;
     Product pt;
+    Button gotopro;
 
     private void clearControls(){
         name.setText("");
@@ -33,6 +35,7 @@ public class productDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
+        gotopro=findViewById(R.id.shv);
         name=findViewById(R.id.txtName);
         price=findViewById(R.id.txtPrice);
         //pId=findViewById(R.id.pId);
@@ -73,6 +76,14 @@ public class productDetails extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        gotopro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(productDetails.this,showProducts.class);
+                startActivity(i);
             }
         });
     }

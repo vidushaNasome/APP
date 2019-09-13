@@ -43,4 +43,19 @@
     <string name="addtocart">Add to Cart</string>
     <string name="Subject">Subject</string>
     <string name="Saman" />
+    <string name="profile">My Profile</string>
+    <string name="ph">My Image</string>
+    <string name="upl">Upload a Photo</string>
+    <string name="usn">USERNAME</string>
+    <string name="email12">EMAIL</string>
+    <string name="password1">PASSWORD</string>
+    <string name="pw">Enter Current password</string>
+    <string name="deletema">DELETE MY ACCOUNT</string>
+    <string name="photo">CAPTURE A IMAGE</string>
+    <string name="upld">UPLOAD THE IMAGE</string>
+    <string name="acc">GO TO MY ACCOUNT</string>
+    <string name="snd">SEND</string>
+    <string name="snd1">SEND VIA EMAIL</string>
+
+
 </resources>

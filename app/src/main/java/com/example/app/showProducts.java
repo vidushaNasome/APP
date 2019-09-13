@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,15 +36,16 @@ public class showProducts extends ListActivity {
     public String ptot;
     public String sendName;
     DatabaseReference getprice;
-
-
-
+    Session session;
+    public String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_products);
 
+        session = new Session(getApplication());
+        username=session.getusename();
 
         DatabaseReference getDetails = FirebaseDatabase.getInstance().getReference().child("Item");
 
@@ -102,29 +104,10 @@ public class showProducts extends ListActivity {
 
         Object o = l.getItemAtPosition(position);
         String pen = o.toString();
-       // Toast.makeText(getApplicationContext(), "You have chosen the pen: " + " " + pen, Toast.LENGTH_LONG).show();
-
-        /*char[] charArray = pen.toCharArray();
-        int k=0;
-
-        for(char x:charArray){
-            if( (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z')){
-                product[k]=x;
-
-                System.out.print(x+"h");
-                k++;
-            }else{
-                break;
-            }
-
-
-        }*/
 
         sendName = pen;
 
-
-
-        Toast.makeText(getApplicationContext(), "You have chosen" + sendName+"********", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "You have chosen " + sendName, Toast.LENGTH_LONG).show();
         gotonextpage();
 
 
@@ -154,14 +137,24 @@ public class showProducts extends ListActivity {
     }
 
     private void next(){
-        Intent i=new Intent(showProducts.this,custom.class);
-        i.putExtra("msg1",sendName);
-        i.putExtra("msg2",ptot);
 
+        if(!username.equals("admin")) {
+            Intent i = new Intent(showProducts.this, custom.class);
+            i.putExtra("msg1", sendName);
+            i.putExtra("msg2", ptot);
+            startActivity(i);
+        }else {
+            Intent iAdmin = new Intent(showProducts.this, AdminUpdate.class);
+            iAdmin.putExtra("msg1", sendName);
+            iAdmin.putExtra("msg2", ptot);
+            startActivity(iAdmin);
+        }
         System.out.print("\n\n\n"+sendName+ptot);
 
-        startActivity(i);
+
 
     }
+
+
 
 }

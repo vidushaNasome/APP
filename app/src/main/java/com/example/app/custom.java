@@ -22,8 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 public class custom extends AppCompatActivity implements View.OnClickListener {
 
     Session session;
-    String user;
-    int tot;
+    public String user;
+    public  int tot;
     CheckBox ch;
     CheckBox chicken;
     CheckBox cheese;
@@ -45,6 +45,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
     MyBasket mb1;
     public String OverallTotal;
     public int netTotal;
+    DatabaseReference totPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
         bt1.setOnClickListener(this);
         session = new Session(getApplicationContext());
         user=session.getusename();
+
         mb=new MyBasket();
         chicken=findViewById(R.id.checkChicken);
         chicken.setOnClickListener(this);
@@ -101,26 +103,42 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
                 totst = String.valueOf(tot);
                 i.putExtra("msg22", totst);
 
-                dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
-                dbRef1= FirebaseDatabase.getInstance().getReference().child("Cart");
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
-
-
-                mb.setUername(user);
-                mb.setItemName(nm);
-                mb.setPrice(tot);
-                dbRef.child(nm).setValue(mb);
-
-                DatabaseReference totPrice = FirebaseDatabase.getInstance().getReference().child("User").child("total");
+                totPrice = FirebaseDatabase.getInstance().getReference().child("Cart");
 
                 totPrice.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            OverallTotal= dataSnapshot.child("total").getValue().toString();
-                            netTotal=Integer.parseInt(OverallTotal);
+                        if (dataSnapshot.hasChild(user)) {
+
+                            totPrice =FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+                            totPrice.removeValue();
+
+                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("message");
+
+
+                            mb.setUername(user);
+                            mb.setItemName(nm);
+                            mb.setPrice(tot);
+                            dbRef.child(nm).setValue(mb);
+
+
+                        }else{
+                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("message");
+
+
+                            mb.setUername(user);
+                            mb.setItemName(nm);
+                            mb.setPrice(tot);
+                            dbRef.child(nm).setValue(mb);
+
                         }
                     }
 
@@ -130,11 +148,6 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
 
                     }
                 });
-                dbRef.child("total").setValue(netTotal+tot);
-
-
-
-
 
                 Toast.makeText(custom.this, "Item added to the cart!", Toast.LENGTH_SHORT).show();
                 LayoutInflater inflater = getLayoutInflater();
