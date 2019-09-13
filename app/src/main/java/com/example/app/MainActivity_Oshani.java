@@ -1,17 +1,23 @@
 package com.example.app;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity_Oshani extends AppCompatActivity {
+
     Button btnPlus,payment;
+    Button btnQunt;
     TextView name3;
     TextView price3;
+    TextView txt1;
     String name1;
     String price1;
 
@@ -21,8 +27,9 @@ public class MainActivity_Oshani extends AppCompatActivity {
         setContentView(R.layout.activity_main__oshani);
         btnPlus=findViewById(R.id.btnContinue);
         payment=findViewById(R.id.btnPay);
+        btnQunt = findViewById(R.id.btnAddQun);
 
-
+        txt1 = findViewById(R.id.txtdisplayAll);
         name3=(TextView)findViewById(R.id.nameid2);
         price3=(TextView)findViewById(R.id.priceid2);
 
@@ -36,6 +43,35 @@ public class MainActivity_Oshani extends AppCompatActivity {
 
     }
 
+    public void showDialog(View view){
+        final AlertDialog.Builder alert=new AlertDialog.Builder(MainActivity_Oshani.this);
+        View mview=getLayoutInflater().inflate(R.layout.custom_dialog,null);
+
+        final EditText txtInputText=mview.findViewById(R.id.txtInput);
+        Button btnCancel=mview.findViewById(R.id.btnCancel);
+        Button btnok=mview.findViewById(R.id.btnok);
+
+        alert.setView(mview);
+
+        final AlertDialog alertDialog=alert.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        btnok.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                txt1.setText("Quantity:"+txtInputText.getText().toString());
+            }
+        });
+
+        alertDialog.show();
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -50,7 +86,10 @@ public class MainActivity_Oshani extends AppCompatActivity {
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity_Oshani.this,Payment.class);
+                Intent intent=new Intent(MainActivity_Oshani.this,checkout.class);
+                intent.putExtra("msg11", name3.getText().toString());
+                intent.putExtra("msg22", price3.getText().toString());
+                intent.putExtra("msg33", txt1.getText().toString());
                 startActivity(intent);
             }
         });

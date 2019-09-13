@@ -1,36 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/picture2"
     tools:context=".Payment">
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="412dp"
-        android:layout_height="78dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="Let's start payment now...."
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
-        android:textColor="@android:color/holo_blue_bright"
+        android:text="Let's start payment now...."
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/nameid8"
+        android:layout_width="174dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="21dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/priceid8"
+        android:layout_width="169dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/nameid8"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/quntid8"
+        android:layout_width="174dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/priceid8"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="21dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/txtItName"
+        android:layout_width="127dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/textView11"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="24dp"
+        android:layout_toLeftOf="@+id/nameid8"
+        android:gravity="fill_horizontal"
+        android:text="Item Name"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtpricet"
+        android:layout_width="127dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/txtItName"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/priceid8"
+        android:foregroundGravity="right"
+        android:gravity="fill_horizontal"
+        android:text="Price"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="127dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/txtpricet"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="27dp"
+        android:layout_toLeftOf="@+id/quntid8"
+        android:gravity="fill_horizontal"
+        android:text="Quantity"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/btnCash"
-        android:layout_width="306dp"
-        android:layout_height="39dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="288dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/custom_button"
         android:text="Cash on Delivery"
+        android:textAllCaps="false"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,16 +116,18 @@
 
     <Button
         android:id="@+id/btnCard"
-        android:layout_width="306dp"
-        android:layout_height="39dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:color/background_light"
+        android:layout_below="@+id/btnCash"
+        android:background="@drawable/custom_button"
         android:text="Credit Card Payment"
+        android:textAllCaps="false"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,4 +136,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCash"
         app:layout_constraintVertical_bias="0.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
