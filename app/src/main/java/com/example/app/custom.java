@@ -1,5 +1,6 @@
 package com.example.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,8 +13,16 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class custom extends AppCompatActivity implements View.OnClickListener {
 
+    Session session;
+    String user;
     int tot;
     CheckBox ch;
     CheckBox chicken;
@@ -30,12 +39,21 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
     String pr1;
     String totst;
     int total;
+    DatabaseReference dbRef;
+    DatabaseReference dbRef1;
+    MyBasket mb;
+    MyBasket mb1;
+    public String OverallTotal;
+    public int netTotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom);
         bt1=findViewById(R.id.addtocartbtn);
         bt1.setOnClickListener(this);
+        session = new Session(getApplicationContext());
+        user=session.getusename();
+        mb=new MyBasket();
         chicken=findViewById(R.id.checkChicken);
         chicken.setOnClickListener(this);
 
@@ -62,6 +80,8 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
         Intent i3=getIntent();
         nm = i3.getStringExtra("msg1");
         pr1 = i3.getStringExtra("msg2");
+
+        System.out.print("data"+nm+pr1);
         try {
             pr = Integer.parseInt(pr1);
             tot=pr;
@@ -78,10 +98,43 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
             case (R.id.addtocartbtn):
                 Intent i = new Intent(custom.this, MainActivity_Oshani.class);
                 i.putExtra("msg11", nm);
-
-
                 totst = String.valueOf(tot);
                 i.putExtra("msg22", totst);
+
+                dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+                dbRef1= FirebaseDatabase.getInstance().getReference().child("Cart");
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+
+                mb.setUername(user);
+                mb.setItemName(nm);
+                mb.setPrice(tot);
+                dbRef.child(nm).setValue(mb);
+
+                DatabaseReference totPrice = FirebaseDatabase.getInstance().getReference().child("User").child("total");
+
+                totPrice.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChildren()) {
+                            OverallTotal= dataSnapshot.child("total").getValue().toString();
+                            netTotal=Integer.parseInt(OverallTotal);
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                dbRef.child("total").setValue(netTotal+tot);
+
+
+
+
 
                 Toast.makeText(custom.this, "Item added to the cart!", Toast.LENGTH_SHORT).show();
                 LayoutInflater inflater = getLayoutInflater();

@@ -124,7 +124,7 @@ public class menuAct extends AppCompatActivity
                 Intent i1 = new Intent(menuAct.this, productDetails.class);
                 startActivity(i1);
             }else{
-                Intent i3 = new Intent(menuAct.this,MenuActivity.class);
+                Intent i3 = new Intent(menuAct.this,showProducts.class);
                 startActivity(i3);
             }
 

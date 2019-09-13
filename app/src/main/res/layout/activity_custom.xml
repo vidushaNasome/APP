@@ -77,17 +77,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Tandoori Chicken Pizza"
         android:textColor="#E91E63"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        tools:text="pizzaa" />
 
     <TextView
         android:id="@+id/price1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rs.510"
         android:textColor="#CC0C1D"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        tools:text="priceeee" />
 
     <Button
         android:id="@+id/addtocartbtn"
