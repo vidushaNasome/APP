@@ -114,11 +114,19 @@ public class menuAct extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent i3=new Intent(menuAct.this,MyAccount.class);
+            Intent i3=new Intent(menuAct.this,Account.class);
             startActivity(i3);
         } else if (id == R.id.nav_gallery) {
-            Intent i1 = new Intent(menuAct.this, MenuActivity.class);
-            startActivity(i1);
+
+            String nm=session.getusename();
+            System.out.println(nm);
+            if(nm.equals("admin")) {
+                Intent i1 = new Intent(menuAct.this, productDetails.class);
+                startActivity(i1);
+            }else{
+                Intent i3 = new Intent(menuAct.this,MenuActivity.class);
+                startActivity(i3);
+            }
 
         } else if (id == R.id.nav_slideshow) {
             Intent i = new Intent(menuAct.this, MainActivity_Oshani.class);
@@ -130,15 +138,11 @@ public class menuAct extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-            String username=session.getusename();
-            if(!username.equals("admin")) {
+
                 Intent i = new Intent(menuAct.this, ContactUs.class);
                 i.putExtra("un", msg);
                 startActivity(i);
-            }else{
-                Intent i3 = new Intent(menuAct.this, AdminContact.class);
-                startActivity(i3);
-            }
+
 
         } else if (id == R.id.nav_send) {
             Intent i4 = new Intent(menuAct.this, aboutus.class);

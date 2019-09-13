@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class ContactUs extends AppCompatActivity {
         String username,email1,massage1;
         TextView un1,email,massage;
         Button send;
+        ImageButton home;
         DatabaseReference dbRef;
         ContactMsg cmsg;
         Boolean conn;
@@ -38,6 +40,7 @@ public class ContactUs extends AppCompatActivity {
         email= findViewById(R.id.emailcontact);
         massage= findViewById(R.id.massegecontact);
         send=findViewById(R.id.contactsendbtn);
+        home=findViewById(R.id.contactHome);
 
         Intent i=getIntent();
         username=session.getusename();
@@ -64,7 +67,7 @@ public class ContactUs extends AppCompatActivity {
                     email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "teamblossom0@gmail.com"});
 
                     email.putExtra(Intent.EXTRA_SUBJECT, email1);
-                    email.putExtra(Intent.EXTRA_TEXT, "From "+username+"\n"+massage1);
+                    email.putExtra(Intent.EXTRA_TEXT, "USERNAME: "+username+"----------------------------\n"+massage1);
 
                     //need this to prompts email client only
                     email.setType("message/rfc822");
@@ -87,6 +90,13 @@ public class ContactUs extends AppCompatActivity {
             }
         });
 
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ContactUs.this, menuAct.class);
+                startActivity(i);
+            }
+        });
     }
 
     public boolean isOnline(){

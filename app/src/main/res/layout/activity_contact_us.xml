@@ -9,6 +9,12 @@
     android:gravity="center_horizontal"
     android:background="@drawable/contact33">
 
+    <ImageButton
+        android:id="@+id/contactHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_home_black_24dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,11 +70,11 @@
 
     <Button
         android:id="@+id/contactsendbtn"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="228dp"
+        android:layout_height="58dp"
         android:layout_marginTop="20dp"
         android:background="#8C9EFF"
-        android:text="@string/send" />
+        android:text="@string/snd" />
 
 
 </LinearLayout>
