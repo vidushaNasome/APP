@@ -109,7 +109,7 @@ public class CashDelivery extends AppCompatActivity {
     }
 
     private void showDetails(){
-        DatabaseReference readRef=FirebaseDatabase.getInstance().getReference().child("cash");
+        DatabaseReference readRef= (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("cash").child(String.valueOf(etName));
         readRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
