@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background=""
+    android:background="#DDDDF1"
     android:backgroundTintMode="src_over"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".RegisterAct">
 
     <ImageView
-        android:layout_width="99dp"
-        android:layout_height="80dp"
+        android:layout_width="92dp"
+        android:layout_height="63dp"
         android:layout_marginTop="50dp"
         app:srcCompat="@drawable/register" />
 
@@ -58,9 +58,10 @@
 
     <Button
         android:id="@+id/reg_Reg"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="148dp"
+        android:layout_height="24dp"
         android:layout_marginTop="20dp"
+        android:background="#82B1FF"
         android:text="@string/Register" />
 
 
