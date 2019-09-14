@@ -6,16 +6,25 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.braintreepayments.cardform.view.CardForm;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CardDelivery extends AppCompatActivity {
     CardForm cardForm;
     Button buy;
     AlertDialog.Builder alertBuilder;
+    CreditCard card;
+
+    DatabaseReference dbRef;
+    DatabaseReference upRef;
+    DatabaseReference deleteRef;
+    DatabaseReference shRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +33,8 @@ public class CardDelivery extends AppCompatActivity {
 
         cardForm=findViewById(R.id.card_form);
         buy=findViewById(R.id.btnBuy);
+
+        card = new CreditCard();
 
         cardForm.cardRequired(true)
                 .expirationRequired(true)
@@ -69,5 +80,39 @@ public class CardDelivery extends AppCompatActivity {
 
     }
 
+        private void addCard(){
+            dbRef = FirebaseDatabase.getInstance().getReference().child("CreditCard");
+
+            try {
+                 if (TextUtils.isEmpty(cardForm.getCardNumber()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else if (TextUtils.isEmpty(cardForm.getExpirationDateEditText().getText().toString()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else if (TextUtils.isEmpty(cardForm.getCvv()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else if (TextUtils.isEmpty(cardForm.getPostalCode()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else if (TextUtils.isEmpty(cardForm.getCountryCode()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else if (TextUtils.isEmpty(cardForm.getMobileNumber()))
+                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                 else {
+                     card.setForm1(cardForm.getCardNumber().trim());
+                     card.setForm1(cardForm.getCountryCodeEditText().toString().trim());
+                     card.setForm1(cardForm.getCvv().trim());
+                     card.setForm1(cardForm.getPostalCode().trim());
+                     card.setForm1(cardForm.getPostalCode().trim());
+
+                     dbRef.push().setValue(card);
+
+                 }
+                    Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+
+            } catch (NumberFormatException ex) {
+                Toast.makeText(getApplicationContext(), "Invalid Contact Number", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
     }
 
