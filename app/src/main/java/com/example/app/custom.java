@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
     public String OverallTotal;
     public int netTotal;
     DatabaseReference totPrice;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case (R.id.addtocartbtn):
-                Intent i = new Intent(custom.this, MainActivity_Oshani.class);
+                 i = new Intent(custom.this, MainActivity_Oshani.class);
                 i.putExtra("msg11", nm);
                 totst = String.valueOf(tot);
                 i.putExtra("msg22", totst);
@@ -113,7 +115,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
                             totPrice =FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
                             totPrice.removeValue();
 
-                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart");
 
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -123,11 +125,11 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
                             mb.setUername(user);
                             mb.setItemName(nm);
                             mb.setPrice(tot);
-                            dbRef.child(nm).setValue(mb);
+                            dbRef.child(user).setValue(mb);
 
 
                         }else{
-                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart").child(user);
+                            dbRef= FirebaseDatabase.getInstance().getReference().child("Cart");
 
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -137,7 +139,7 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
                             mb.setUername(user);
                             mb.setItemName(nm);
                             mb.setPrice(tot);
-                            dbRef.child(nm).setValue(mb);
+                            dbRef.child(user).setValue(mb);
 
                         }
                     }
@@ -155,6 +157,16 @@ public class custom extends AppCompatActivity implements View.OnClickListener {
                 Toast toast = new Toast(getApplicationContext());
                 toast.setDuration(Toast.LENGTH_LONG);
                 toast.setView(toastLayout); toast.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        startActivity(i);
+                        finish();
+                    }
+                }, 400);
+
 
                 startActivity(i);
                 break;

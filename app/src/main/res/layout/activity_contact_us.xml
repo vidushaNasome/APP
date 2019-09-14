@@ -74,7 +74,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="20dp"
         android:background="#8C9EFF"
-        tools:text="@string/snd1" />
+        android:text="@string/snd1" />
 
 
 </LinearLayout>
