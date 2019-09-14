@@ -22,8 +22,8 @@ public class MainActivity_Oshani extends AppCompatActivity {
 
     Button btnPlus,payment;
     Button btnQunt;
-     TextView name3;
-     TextView price3;
+    TextView name3;
+    TextView price3;
     TextView txt1;
     public String name1;
     public String price1;
@@ -134,7 +134,5 @@ public class MainActivity_Oshani extends AppCompatActivity {
             }
         });
     }
-    private void display(){
 
-    }
 }

@@ -191,10 +191,11 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_button"
         android:gravity="center"
-        android:onClick="customDialog"
+        android:onClick="customiseDialog"
         android:text="Customise"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+         />
 </RelativeLayout>

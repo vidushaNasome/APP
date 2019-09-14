@@ -27,16 +27,15 @@ public class Payment extends AppCompatActivity {
 
         name8=(TextView)findViewById(R.id.nameid8);
         price8=(TextView)findViewById(R.id.priceid8);
-        qunt8=(TextView)findViewById(R.id.quntid8);
+
 
         Intent i=getIntent();
         name9=i.getStringExtra("msg11");
         price9=i.getStringExtra("msg22");
-        qunt9=i.getStringExtra("msg33");
+
 
         name8.setText(name9);
         price8.setText(price9);
-        qunt8.setText(qunt9);
 
     }
 
@@ -49,7 +48,6 @@ public class Payment extends AppCompatActivity {
                 Intent intent1=new Intent(Payment.this,CashDelivery.class);
                 intent1.putExtra("msg11", name8.getText().toString());
                 intent1.putExtra("msg22", price8.getText().toString());
-                intent1.putExtra("msg33", qunt8.getText().toString());
                 startActivity(intent1);
             }
         });

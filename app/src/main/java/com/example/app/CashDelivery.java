@@ -30,7 +30,6 @@ public class CashDelivery extends AppCompatActivity {
     EditText etName, etPhone, etAddress, etCity;
     Button btnConfirm;
     Button btncustomise;
-    Button btnshow;
     public String name;
     cash cashs;
     Session session;
@@ -39,6 +38,7 @@ public class CashDelivery extends AppCompatActivity {
     DatabaseReference dbRef;
     DatabaseReference upRef;
     DatabaseReference shRef;
+    DatabaseReference deleteRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,6 @@ public class CashDelivery extends AppCompatActivity {
 
         session = new Session(getApplicationContext());
         user = session.getusename();
-
-        dbRef = FirebaseDatabase.getInstance().getReference("cashs");
 
         txtName = findViewById(R.id.txtyourname);
         txtContact = findViewById(R.id.txtphone);
@@ -62,7 +60,6 @@ public class CashDelivery extends AppCompatActivity {
 
         btncustomise = findViewById(R.id.btnCustomise);
         btnConfirm = findViewById(R.id.btnconfirm);
-        btnshow = findViewById(R.id.btnShow);
 
         etName.setText(user);
 
@@ -74,9 +71,7 @@ public class CashDelivery extends AppCompatActivity {
                 addCash();
             }
         });
-
     }
-
     private void addCash() {
         dbRef = FirebaseDatabase.getInstance().getReference().child("cash");
 
@@ -116,7 +111,7 @@ public class CashDelivery extends AppCompatActivity {
         etCity.setText("");
     }
 
-    public void customDialog(View view) {
+    public void customiseDialog(View view) {
         final AlertDialog.Builder alert = new AlertDialog.Builder(CashDelivery.this);
         View mview = getLayoutInflater().inflate(R.layout.update_dialog, null);
 
@@ -127,13 +122,13 @@ public class CashDelivery extends AppCompatActivity {
 
         Button btnUpdate = mview.findViewById(R.id.btnEdit);
         Button btnDelete = mview.findViewById(R.id.btnDelete);
-
+        Button btnDidplay= mview.findViewById(R.id.btnShow);
         alert.setView(mview);
 
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
-        btnshow.setOnClickListener(new View.OnClickListener() {
+        btnDidplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 shRef = FirebaseDatabase.getInstance().getReference().child("cash").child(user);
@@ -143,10 +138,10 @@ public class CashDelivery extends AppCompatActivity {
 
                         try {
                             if (dataSnapshot.hasChildren()) {
-                                etName.setText(dataSnapshot.child("cusid").getValue().toString());
-                                etPhone.setText(dataSnapshot.child("cusName").getValue().toString());
-                                etAddress.setText(dataSnapshot.child("cusAddress").getValue().toString());
-                                etCity.setText(dataSnapshot.child("cusCity").getValue().toString());
+                                etname.setText(dataSnapshot.child("cusName").getValue().toString());
+                                etphone.setText(dataSnapshot.child("cusPhone").getValue().toString());
+                                etadd.setText(dataSnapshot.child("cusAddress").getValue().toString());
+                                etcty.setText(dataSnapshot.child("cusCity").getValue().toString());
                             } else
                                 Toast.makeText(getApplicationContext(), "No Source to Display", Toast.LENGTH_SHORT).show();
 
@@ -160,7 +155,66 @@ public class CashDelivery extends AppCompatActivity {
                     }
                 });
             }
+        });
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                upRef=FirebaseDatabase.getInstance().getReference().child("cash");
+                upRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChild(user)){
+                            try{
+                                cashs.setCusName(etname.getText().toString().trim());
+                                cashs.setCusAddress(etadd.getText().toString().trim());
+                                cashs.setCusCity(etcty.getText().toString().trim());
+                                cashs.setCusPhone(Integer.parseInt(etphone.getText().toString().trim()));
 
+                                dbRef=FirebaseDatabase.getInstance().getReference().child("cash").child(user);
+                                dbRef.setValue(cashs);
+                                clearControls();
+
+                                Toast.makeText(getApplicationContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show();
+
+                            }catch (NumberFormatException e){
+                                Toast.makeText(getApplicationContext(), "Invalid Contact Number", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(), "No source to Display", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRef=FirebaseDatabase.getInstance().getReference().child("cash");
+                deleteRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChild(user)){
+                            dbRef=FirebaseDatabase.getInstance().getReference().child("cash").child(user);
+                            dbRef.removeValue();
+                            clearControls();
+
+                            Toast.makeText(getApplicationContext(),"Data Deleted Successfull",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(),"No source to Delete",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
         });
 
         alertDialog.show();
