@@ -12,6 +12,9 @@ public class checkout extends AppCompatActivity {
     TextView list;
     Button btnAdd;
     Button btnpayment;
+    String name9;
+    String price9;
+    public String quntity9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +26,13 @@ public class checkout extends AppCompatActivity {
 
         btnAdd=findViewById(R.id.btnAdd);
 
+
+        Intent i=getIntent();
+        name9=i.getStringExtra("msg11");
+        price9=i.getStringExtra("msg22");
+        quntity9=i.getStringExtra("msg33");
+
         list.setText("Item Name:"+getIntent().getStringExtra("msg11")+"\n"+"Price:Rs"+getIntent().getStringExtra("msg22")+".00"+"\n"+getIntent().getStringExtra("msg33"));
-
-        int total=0;
-
-
 
     }
 
@@ -38,7 +43,9 @@ public class checkout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(checkout.this,Payment.class);
-                int subTot;
+                i.putExtra("msg11", name9);
+                i.putExtra("msg22", price9);
+                i.putExtra("msg33",quntity9);
                 startActivity(i);
             }
         });

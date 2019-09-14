@@ -46,18 +46,6 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/quntid8"
-        android:layout_width="174dp"
-        android:layout_height="41dp"
-        android:layout_below="@+id/priceid8"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="21dp"
-        android:gravity="center" />
-
-    <TextView
         android:id="@+id/txtItName"
         android:layout_width="127dp"
         android:layout_height="39dp"
@@ -81,18 +69,6 @@
         android:foregroundGravity="right"
         android:gravity="fill_horizontal"
         android:text="Price"
-        android:textAllCaps="false"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="127dp"
-        android:layout_height="39dp"
-        android:layout_below="@+id/txtpricet"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="27dp"
-        android:layout_toLeftOf="@+id/quntid8"
-        android:gravity="fill_horizontal"
-        android:text="Quantity"
         android:textAllCaps="false"
         android:textStyle="bold" />
 
