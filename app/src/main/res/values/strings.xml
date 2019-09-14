@@ -56,6 +56,10 @@
     <string name="acc">GO TO MY ACCOUNT</string>
     <string name="snd">SEND</string>
     <string name="snd1">SEND VIA EMAIL</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnUpdate">Update</string>
+    <string name="name">Product Name</string>
+    <string name="price">Price</string>
 
 
 </resources>
