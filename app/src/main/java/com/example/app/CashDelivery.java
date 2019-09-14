@@ -29,15 +29,24 @@ public class CashDelivery extends AppCompatActivity {
     TextView txtName, txtContact, txtaddress, txtcity;
     EditText etName, etPhone, etAddress, etCity;
     Button btnConfirm;
+    Button btncustomise;
+    Button btnshow;
+    public String name;
     cash cashs;
+    Session session;
+    public String user;
 
     DatabaseReference dbRef;
     DatabaseReference upRef;
+    DatabaseReference shRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_delivery);
+
+        session = new Session(getApplicationContext());
+        user = session.getusename();
 
         dbRef = FirebaseDatabase.getInstance().getReference("cashs");
 
@@ -51,8 +60,11 @@ public class CashDelivery extends AppCompatActivity {
         etAddress = findViewById(R.id.edAddress);
         etCity = findViewById(R.id.edCity);
 
-
+        btncustomise = findViewById(R.id.btnCustomise);
         btnConfirm = findViewById(R.id.btnconfirm);
+        btnshow = findViewById(R.id.btnShow);
+
+        etName.setText(user);
 
         cashs = new cash();
 
@@ -67,6 +79,9 @@ public class CashDelivery extends AppCompatActivity {
 
     private void addCash() {
         dbRef = FirebaseDatabase.getInstance().getReference().child("cash");
+
+        name = etName.getText().toString();
+
         try {
             if (TextUtils.isEmpty(etName.getText().toString()))
                 Toast.makeText(getApplicationContext(), "Please enter your name", Toast.LENGTH_SHORT).show();
@@ -80,7 +95,8 @@ public class CashDelivery extends AppCompatActivity {
                 cashs.setCusCity(etCity.getText().toString().trim());
                 cashs.setCusPhone(Integer.parseInt(etPhone.getText().toString().trim()));
 
-                dbRef.push().setValue(cashs);
+                //dbRef.push().setValue(cashs);
+                dbRef.child(name).setValue(cashs);
 
                 Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
                 clearControls();
@@ -117,37 +133,37 @@ public class CashDelivery extends AppCompatActivity {
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
-        upRef = FirebaseDatabase.getInstance().getReference().child("cash");
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
+        btnshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String iName = etname.getText().toString();
-                String iPhone = etphone.getText().toString();
-                String iAddress = etadd.getText().toString();
-                String iCity = etcty.getText().toString();
-                editData(iName, iPhone, iAddress, iCity);
+                shRef = FirebaseDatabase.getInstance().getReference().child("cash").child(user);
+                shRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        try {
+                            if (dataSnapshot.hasChildren()) {
+                                etName.setText(dataSnapshot.child("cusid").getValue().toString());
+                                etPhone.setText(dataSnapshot.child("cusName").getValue().toString());
+                                etAddress.setText(dataSnapshot.child("cusAddress").getValue().toString());
+                                etCity.setText(dataSnapshot.child("cusCity").getValue().toString());
+                            } else
+                                Toast.makeText(getApplicationContext(), "No Source to Display", Toast.LENGTH_SHORT).show();
+
+                        } catch (Exception e) {
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
+
         });
+
         alertDialog.show();
     }
 
-    private void editData(String strName, final String strPhone, final String strAddress, final String strCity){
-        Query editQuery=upRef.orderByChild("etname").equalTo(strName);
-        editQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot edtData:dataSnapshot.getChildren()){
-                    edtData.getRef().child("content").setValue(strPhone);
-                    edtData.getRef().child("content").setValue(strAddress);
-                    edtData.getRef().child("content").setValue(strCity);
-                }
-                Toast.makeText(getApplicationContext(), "Data Update Successfully", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
