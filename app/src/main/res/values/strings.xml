@@ -60,6 +60,9 @@
     <string name="btnUpdate">Update</string>
     <string name="name">Product Name</string>
     <string name="price">Price</string>
+    <string name="foodmenu">Food Menu</string>
+    <string name="pName">Product Name</string>
+    <string name="show">Show</string>
 
 
 </resources>

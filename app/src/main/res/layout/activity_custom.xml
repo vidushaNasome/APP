@@ -95,10 +95,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="40dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/custom_button"
+        android:text="Add to Cart"
         android:textColor="@android:color/background_dark"
-        android:textSize="15dp"
-        android:text="Add to Cart"/>
+        android:textSize="15dp" />
 
 
 </LinearLayout>

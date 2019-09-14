@@ -3,6 +3,7 @@ package com.example.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class productDetails extends AppCompatActivity {
-    String pName,pPrice;
+   public String pName,pPrice;
     DatabaseReference dbRef;
     TextView name,price;
     Integer Price12;
@@ -50,19 +51,20 @@ public class productDetails extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
+                try{
                 pName=name.getText().toString();
                 pPrice=price.getText().toString();
                 Price12=Integer.parseInt(pPrice);
 
 
-                if(pName.isEmpty()|| pPrice.isEmpty())
+
+                if(pName.isEmpty()&& pPrice.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please Input Values For Empty Fields", Toast.LENGTH_LONG).show();
+
+                }
                 else {
 
-                    dbRef= FirebaseDatabase.getInstance().getReference().child("Item");
+                    dbRef = FirebaseDatabase.getInstance().getReference().child("Item");
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("message");
 
@@ -73,10 +75,20 @@ public class productDetails extends AppCompatActivity {
                     dbRef.child(pName).setValue(pt);
                     Toast.makeText(getApplicationContext(), "You have Successfully added", Toast.LENGTH_LONG).show();
                     clearControls();
-
+                    Intent i7 = new Intent(productDetails.this, showProducts.class);
+                    startActivity(i7);
                 }
 
-            }
+
+            }catch(Exception e){
+
+                    Toast ToastMessage = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT);
+                    View toastView = ToastMessage.getView();
+                    toastView.setBackgroundColor(Color.parseColor("#C61858"));
+                    ToastMessage.show();
+                }
+
+                }
         });
 
         gotopro.setOnClickListener(new View.OnClickListener() {
