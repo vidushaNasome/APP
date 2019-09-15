@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,10 @@ public class MainActivity_Oshani extends AppCompatActivity {
     TextView name3;
     TextView price3;
     TextView txt1;
+    int total;
+    int ntPrice;
+    int quntity;
+    String netTot;
     public String name1;
     public String price1;
     public String name11;
@@ -49,6 +54,8 @@ public class MainActivity_Oshani extends AppCompatActivity {
         username=session.getusename();
         name11=i.getStringExtra("msg11");
         price11=i.getStringExtra("msg22");
+
+        ntPrice = Integer.parseInt(price11);
 
         DatabaseReference displayCart = FirebaseDatabase.getInstance().getReference().child("Cart").child(username);
 
@@ -95,6 +102,12 @@ public class MainActivity_Oshani extends AppCompatActivity {
 
         final AlertDialog alertDialog=alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
+
+      /*  quntity= (int) Integer.parseInt(String.valueOf(txtInputText));
+        total = ntPrice * quntity;
+        Intent i3=getIntent();
+        netTot= i3.getStringExtra("msg5");*/
+
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

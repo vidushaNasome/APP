@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class checkout extends AppCompatActivity {
+    int total;
     TextView list;
     Button btnAdd;
     Button btnpayment;
@@ -25,7 +26,6 @@ public class checkout extends AppCompatActivity {
         btnpayment=findViewById(R.id.btncheck);
 
         btnAdd=findViewById(R.id.btnAdd);
-
 
         Intent i=getIntent();
         name9=i.getStringExtra("msg11");

@@ -35,6 +35,7 @@ public class CashDelivery extends AppCompatActivity {
     Session session;
     public String user;
 
+    //Database References
     DatabaseReference dbRef;
     DatabaseReference upRef;
     DatabaseReference shRef;
@@ -72,6 +73,7 @@ public class CashDelivery extends AppCompatActivity {
             }
         });
     }
+    //Insert method Implementation
     private void addCash() {
         dbRef = FirebaseDatabase.getInstance().getReference().child("cash");
 
@@ -103,7 +105,7 @@ public class CashDelivery extends AppCompatActivity {
         }
 
     }
-
+    //clear values
     private void clearControls() {
         etName.setText("");
         etPhone.setText("");
@@ -111,6 +113,7 @@ public class CashDelivery extends AppCompatActivity {
         etCity.setText("");
     }
 
+    //Dialog box for edit and delete records
     public void customiseDialog(View view) {
         final AlertDialog.Builder alert = new AlertDialog.Builder(CashDelivery.this);
         View mview = getLayoutInflater().inflate(R.layout.update_dialog, null);
@@ -128,6 +131,7 @@ public class CashDelivery extends AppCompatActivity {
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);
 
+        //Retrieve data
         btnDidplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +160,7 @@ public class CashDelivery extends AppCompatActivity {
                 });
             }
         });
+        //Edit Data
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,6 +196,7 @@ public class CashDelivery extends AppCompatActivity {
                 });
             }
         });
+        //Delete data
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
