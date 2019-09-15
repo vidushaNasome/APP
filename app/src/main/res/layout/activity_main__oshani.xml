@@ -153,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_below="@+id/btnAddQun"
-        android:background="@android:color/system_notification_accent_color"
+        android:background="@color/colorAcc"
         android:textColor="@android:color/white" />
 
 
