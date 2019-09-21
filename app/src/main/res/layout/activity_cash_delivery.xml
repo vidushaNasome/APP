@@ -42,7 +42,7 @@
         android:layout_marginRight="239dp"
         android:layout_marginBottom="405dp"
         android:gravity="fill_horizontal"
-        android:text="Your Name"
+        android:text="@string/your_name"
         android:textStyle="bold" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_marginRight="227dp"
         android:layout_marginBottom="347dp"
         android:gravity="fill_horizontal"
-        android:text="Contact Number"
+        android:text="@string/contact_number"
         android:textStyle="bold" />
 
     <TextView
@@ -78,7 +78,7 @@
         android:layout_marginRight="235dp"
         android:layout_marginBottom="292dp"
         android:gravity="fill_horizontal"
-        android:text="Address"
+        android:text="@string/address"
         android:textStyle="bold" />
 
     <TextView
@@ -96,7 +96,7 @@
         android:layout_marginRight="226dp"
         android:layout_marginBottom="242dp"
         android:gravity="fill_horizontal"
-        android:text="City Name"
+        android:text="@string/city"
         android:textStyle="bold" />
 
     <EditText
@@ -169,7 +169,7 @@
         android:layout_marginBottom="78dp"
         android:background="@drawable/custom_button"
         android:gravity="center"
-        android:text="Confirm"
+        android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -192,7 +192,7 @@
         android:background="@drawable/custom_button"
         android:gravity="center"
         android:onClick="customiseDialog"
-        android:text="Customise"
+        android:text="@string/customise"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"

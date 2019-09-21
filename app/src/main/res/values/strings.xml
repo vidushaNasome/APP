@@ -63,6 +63,13 @@
     <string name="foodmenu">Food Menu</string>
     <string name="pName">Product Name</string>
     <string name="show">Show</string>
+    <string name="view_details">View Details</string>
+    <string name="your_name">Your Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="address">Address</string>
+    <string name="city">City Name</string>
+    <string name="confirm">Confirm</string>
+    <string name="customise">Customise</string>
 
 
 </resources>

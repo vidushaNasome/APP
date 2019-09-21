@@ -85,12 +85,12 @@
 
     <Button
         android:id="@+id/btnShow"
-        android:background="@color/colorAcc"
-        android:textColor="#ffffff"
-        android:textAllCaps="false"
-        android:textSize="14sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show" />
+        android:background="@color/colorAcc"
+        android:text="@string/view_details"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
 
 </LinearLayout>
