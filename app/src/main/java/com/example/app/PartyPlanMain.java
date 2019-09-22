@@ -80,12 +80,7 @@ public class PartyPlanMain extends AppCompatActivity {
         }
         });
 
-        // addEvent.setOnClickListener(new View.OnClickListener() {
-        //   @Override
-        // public void onClick(View view) {
-        //   add();
-        //}
-        //});
+
 
         updateEvent.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -94,31 +89,11 @@ public class PartyPlanMain extends AppCompatActivity {
         }
         });
 
-        //deleteEvent.setOnClickListener(new View.OnClickListener() {
-          //@Override
-        //public void onClick(View view) {
-          // delete();
-        //}
-        //});
-
-        //public void add(){
-        //  table_Party1.addValueEventListener(new ValueEventListener() {
-        //    @Override
-        //  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        //    pty.setUserName(userName.getText().toString().trim());
-        //  pty.setTelNo(telNo.getText().toString().trim());
-        //pty.setNoOfGuests(Integer.parseInt(noOfGuests.getText().toString().trim()));
-        //table_Party1.child(pty.getTelNo().setValue(pt))
-
-        //@Override
-        //public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        //}
-        //})
-        //}
 
 
     }
+
+
 
     private void setEvent() {
 
@@ -128,21 +103,24 @@ public class PartyPlanMain extends AppCompatActivity {
         readRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
-                    pty.setUserName(userName.getText().toString().trim());
-                    pty.setTelNo(telNo.getText().toString().trim());
-                    pty.setEventDate(eventDate.getText().toString().trim());
-                    pty.setEventTime(eventTime.getText().toString().trim());
-                    pty.setNoOfGuests(Integer.parseInt(noOfGuests.getText().toString().trim()));
 
-                    dbRef = FirebaseDatabase.getInstance().getReference().child("partyplan").child(telNo.getText().toString());
-                    dbRef.setValue(pty);
+                if(validate()==true) {
+                    try {
+                        pty.setUserName(userName.getText().toString().trim());
+                        pty.setTelNo(telNo.getText().toString().trim());
+                        pty.setEventDate(eventDate.getText().toString().trim());
+                        pty.setEventTime(eventTime.getText().toString().trim());
+                        pty.setNoOfGuests(Integer.parseInt(noOfGuests.getText().toString().trim()));
 
-                    Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
-                    clearControls();
+                        dbRef = FirebaseDatabase.getInstance().getReference().child("partyplan").child(telNo.getText().toString());
+                        dbRef.setValue(pty);
 
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "Invalid Telephone Number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+                        clearControls();
+
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Invalid Telephone Number", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -158,6 +136,7 @@ public class PartyPlanMain extends AppCompatActivity {
         delRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 try {
                     if (dataSnapshot.hasChild(telNo.getText().toString().trim())) {
                         dbRef = FirebaseDatabase.getInstance().getReference().child("partyplan").child(telNo.getText().toString().trim());
@@ -239,6 +218,8 @@ public class PartyPlanMain extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
+
             }
         });
         dbRef = FirebaseDatabase.getInstance().getReference().child(telNo.getText().toString().trim());
@@ -293,7 +274,40 @@ public class PartyPlanMain extends AppCompatActivity {
         //});
    // }
 
+    private boolean validate(){
 
 
+        String username = userName.getText().toString().trim();
+        String mobileno = telNo.getText().toString().trim();
+        String eventdate = eventDate.getText().toString().trim();
+        String eventtime = eventTime.getText().toString().trim();
+        String noofguests = noOfGuests.getText().toString().trim();
+
+
+        if(username.isEmpty()){
+            userName.setError("Filed can't be empty");
+            return false;
+        }
+        else if (mobileno.isEmpty()) {
+            telNo.setError("Filed can't be empty");
+            return false;
+        }
+        else if (eventdate.isEmpty()) {
+            eventDate.setError("Filed can't be empty");
+            return false;
+        }
+        else if (eventtime.isEmpty()) {
+            eventTime.setError("Filed can't be empty");
+            return false;
+        }
+        else if (noofguests.isEmpty()) {
+            noOfGuests.setError("Filed can't be empty");
+            return false;
+        }
+        else{
+            return  true;
+        }
+    }
 
 }
+
