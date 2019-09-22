@@ -72,4 +72,18 @@
     <string name="customise">Customise</string>
 
 
+    <string name="app_name">PartyPlan</string>
+    <string name="userName">User Name</string>
+    <string name="telNo">Telephone Number</string>
+    <string name="eventDate">Event Date</string>
+    <string name="eventTime">Event Time</string>
+    <string name="eventTypeA">Event Type A</string>
+    <string name="eventTypeB">Event Type B</string>
+    <string name="noOfGuests">Number of guests</string>
+    <string name="showDetails">Show Details</string>
+    <string name="addEvent">Add Event</string>
+    <string name="updateEvent">Update Event</string>
+    <string name="deleteEvent">Delete Event</string>
+
+
 </resources>

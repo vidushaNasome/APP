@@ -39,10 +39,10 @@
         <activity android:name=".ContactUs" />
         <activity android:name=".custom" />
         <activity android:name=".MainActivity_Oshani" />
-        <activity android:name=".MainActivity_Madara" />
-        <activity android:name=".MainCalendar" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".PartyPlanMain">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
