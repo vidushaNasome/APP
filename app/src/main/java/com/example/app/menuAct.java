@@ -133,7 +133,7 @@ public class menuAct extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_tools) {
-            Intent i = new Intent(menuAct.this, MainActivity_Madara.class);
+            Intent i = new Intent(menuAct.this, PartyPlanMain.class);
             startActivity(i);
 
         } else if (id == R.id.nav_share) {

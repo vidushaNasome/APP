@@ -139,6 +139,8 @@ public class PartyPlanMain extends AppCompatActivity {
                     dbRef.setValue(pty);
 
                     Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+                    clearControls();
+
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Invalid Telephone Number", Toast.LENGTH_SHORT).show();
                 }
@@ -152,17 +154,21 @@ public class PartyPlanMain extends AppCompatActivity {
     }
 
     public void delete() {
-        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child(telNo.getText().toString().trim());
+        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("partyplan");
         delRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(telNo.getText().toString().trim())) {
-                    dbRef = FirebaseDatabase.getInstance().getReference().child(telNo.getText().toString().trim());
-                    dbRef.removeValue();
+                try {
+                    if (dataSnapshot.hasChild(telNo.getText().toString().trim())) {
+                        dbRef = FirebaseDatabase.getInstance().getReference().child("partyplan").child(telNo.getText().toString().trim());
+                        dbRef.removeValue();
 
-                    Toast.makeText(getApplicationContext(), "Data Delete Successfully", Toast.LENGTH_SHORT).show();
-                } else
-                   Toast.makeText(getApplicationContext(), "No Source to Delete", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data Delete Successfully", Toast.LENGTH_SHORT).show();
+                        clearControls();
+                    } else
+                        Toast.makeText(getApplicationContext(), "No Source to Delete", Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e){Toast.makeText(getApplicationContext(), "Please enter a phone number to delete the event", Toast.LENGTH_SHORT).show();}
             }
 
            @Override
@@ -180,16 +186,19 @@ public class PartyPlanMain extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChildren()){
-                    userName.setText(dataSnapshot.child("userName").getValue().toString());
-                    telNo.setText(dataSnapshot.child("telNo").getValue().toString());
-                    eventDate.setText(dataSnapshot.child("eventDate").getValue().toString());
-                    eventTime.setText(dataSnapshot.child("eventTime").getValue().toString());
-                    noOfGuests.setText(dataSnapshot.child("noOfGuests").getValue().toString());
+                try {
+                    if (dataSnapshot.hasChildren()) {
+                        userName.setText(dataSnapshot.child("userName").getValue().toString());
+                        telNo.setText(dataSnapshot.child("telNo").getValue().toString());
+                        eventDate.setText(dataSnapshot.child("eventDate").getValue().toString());
+                        eventTime.setText(dataSnapshot.child("eventTime").getValue().toString());
+                        noOfGuests.setText(dataSnapshot.child("noOfGuests").getValue().toString());
 
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"No Source to Display",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No Source to Display", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Please enter a phone number to show the event", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -220,6 +229,7 @@ public class PartyPlanMain extends AppCompatActivity {
                     dbRef.setValue(pty);
 
                     Toast.makeText(getApplicationContext(), "Data Update Successfully", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Invalid Telephone Number", Toast.LENGTH_SHORT).show();
                 }
