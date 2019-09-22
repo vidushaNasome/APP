@@ -8,12 +8,27 @@
     android:background="@drawable/pizza"
     tools:context=".aboutus">
 
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="About Us"
+            android:textColor="#FFEB3B"
+            android:textSize="40dp"
+            />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="235dp"
-        android:layout_height="591dp"
-        android:text="Speedy, a subsidiary of Yum! Brands, is the world's largest pizza company and home of Pan Pizza.
-        Today is an iconic
+        android:layout_width="230dp"
+        android:layout_height="549dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="0dp"
+        android:text="Speedy, a subsidiary of Yum! Brands, is the world's largest pizza company and home of Pan Pizza.Today is an iconic
         global brand that delivers more pizza, pasta and wings than any other restaurant in the world.  "
         android:textColor="#FDFADF"
         android:textSize="30dp" />

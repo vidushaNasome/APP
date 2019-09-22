@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +41,17 @@ public class showProducts extends ListActivity {
     DatabaseReference getprice;
     Session session;
     public String username;
+    ImageButton home;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_products);
 
+
+        home=findViewById(R.id.home);
         session = new Session(getApplication());
         username=session.getusename();
 
@@ -93,6 +101,21 @@ public class showProducts extends ListActivity {
 
 
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i10 = new Intent(showProducts.this,menuAct.class);
+                startActivity(i10);
+            }
+        });
+    }
+
     private void display(){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ob);
         setListAdapter(adapter);

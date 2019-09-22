@@ -24,13 +24,28 @@
         android:textColor="#FF5722"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/rhome"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#DDD8D8">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:src="@drawable/home" />
+
+    </RelativeLayout>
+
     <ListView
         android:id="@android:id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="572dp"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp"
         android:background="@drawable/pizza33" />
 
